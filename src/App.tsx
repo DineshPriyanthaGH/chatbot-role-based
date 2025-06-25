@@ -1,13 +1,23 @@
+
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthProvider';
+import LandingPage from './pages/LandingPage';
+import Navbar from './components/Navbar';
 
-
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      
-    </div>
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        
+          
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
