@@ -17,7 +17,15 @@ export const AuthProvider = ({
     return unsubscribe;
   }, []);
   
-  
+    const login = (email: string, password: string) => signInWithEmailAndPassword(auth, email, password);
+  const signup = (email: string, password: string) => createUserWithEmailAndPassword(auth, email, password);
+  const logout = () => signOut(auth);
 
-    }
+    return (
+        <AuthContext.Provider value={{ user, login, signup, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};  
 
+export const useAuth = () => useContext(AuthContext);
