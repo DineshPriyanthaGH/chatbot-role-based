@@ -15,3 +15,15 @@ export const signUpUser = async (email: string, password: string) => {
   }
 };
 
+export const logInUser = async (email: string, password: string) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return userCredential.user; // Return the user object
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error('Login failed: ' + error.message);
+    } else {
+      throw new Error('Login failed: Unknown error');
+    }
+  }
+};
