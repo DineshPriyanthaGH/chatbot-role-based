@@ -27,3 +27,15 @@ export const logInUser = async (email: string, password: string) => {
     }
   }
 };
+
+export const logOutUser = async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error('Logout failed: ' + error.message);
+    } else {
+      throw new Error('Logout failed: Unknown error');
+    }
+  }
+};
